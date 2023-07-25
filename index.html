@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Button Clicker</title>
+        <link rel="stylesheet" type="text/css" href="spacebox.css" />
+        <link rel="stylesheet" type="text/css" href="style.css" />
+    </head>
+    <body class="pad-1" onload="Setup()">
+        <!-- Content -->
+        <div class="box">
+
+            <!-- Header -->
+            <div class="box">
+                <p class="title">Button Clicker</p>
+            </div>
+
+            <!-- Button Panel-->
+            <div class="panel">
+                <div class="panel-body">
+                    <p class="heading text-c" id="clickCounter"></p>
+                    <p class="subheading pad-b1 text-c">clicks</p>
+                    <button class="button size-full danger" id="theButton" onclick="UserClick()"></button>
+                </div>
+            </div>
+
+            <!-- Store Panel -->
+            <div class="panel">
+                <div class="panel-header">
+                    <p class="header">Store</p>
+                </div>
+
+                <div class="panel-body">
+                    <div class="panel-buttons pad-b1">
+                        <button class="panel-btn-left" disabled>1</button>
+                        <button class="panel-btn-center">10</button>
+                        <button class="panel-btn-center">100</button>
+                        <button class="panel-btn-right">Max</button>
+                    </div>
+
+                    <div class="hbox">
+                        <p class="body size-6 align-c margin-0">Auto-Clicker</p>
+                        <button class="button size-4">10C</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trophies Panel (Unfinished) -->
+            <!-- <div class="panel">
+                <div class="panel-header">
+                    <p class="header">Trophies</p>
+                </div>
+
+                <div class="panel-body">
+                    <div class="hbox">
+                        <button class="button size-2"><i class="material-icons">mouse</i></button>
+                        <button class="button size-2"><i class="material-icons">favorite</i></button>
+                        <button class="button size-2"><i class="material-icons">schedule</i></button>
+                        <button class="button size-2"><i class="material-icons">grade</i></button>
+                        <button class="button size-2"><i class="material-icons">swipe</i></button>
+                    </div>
+                </div>
+            </div> -->
+
+
+            <!-- Footer -->
+            <div class="footer pad-t1">
+                <p class="body">made with &#10084; by @leftbones</p>
+            </div>
+
+        </div>
+
+        <!-- Scripts -->
+        <script src='main.js'></script>
+    </body>
+</html>
