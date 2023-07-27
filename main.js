@@ -9,8 +9,8 @@
 
 // Update the click counter text
 var updateClickCounter = function() {
-    if (Number.isInteger(clicks.toNumber())) clickCounter.innerHTML = clicks.valueOf();
-    else clickCounter.innerHTML = clicks.toFixed(2);
+    if (Number.isInteger(clicks.toNumber())) clickCounter.innerHTML = formatNumber(clicks.toNumber());
+    else clickCounter.innerHTML = formatNumber(Number(clicks.toFixed(2)));
 
     updateStore();
     updateStats();

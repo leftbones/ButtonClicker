@@ -28,7 +28,7 @@ const rareFaces = {
 // Roll to generate a Rare Face
 var getRareFace = function() {
     for (let i in rareFaces) {
-        if (Roll(i)) {
+        if (roll(i)) {
             theButton.innerHTML = rareFaces[i];
         }
     }
@@ -44,8 +44,8 @@ var randomizeFace = function() {
         else swapChance *= heldFaceSwapMultiplier;
     }
 
-    if (Roll(swapChance)) {
-        if (Roll(rareFaceChance)) getRareFace();
+    if (roll(swapChance)) {
+        if (roll(rareFaceChance)) getRareFace();
         else theButton.innerHTML = buttonFaces[Math.floor(Math.random() * buttonFaces.length)];
     }
 }

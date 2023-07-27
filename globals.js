@@ -3,11 +3,13 @@ var theButton = document.getElementById("theButton");
 
 var buyAmount = 1;
 
+var costMultiplier = 1.1;
+
 var faceSwapChance = 20;
 var rareFaceChance = 10;
 
 var heldFaceSwapMultiplier = 0.5;
-var scrubFaceSwapMultiplier = 0.1;
+var scrubFaceSwapMultiplier = 0.25;
 
 var clicks = new Decimal(0);
 var clickPower = 1.0;

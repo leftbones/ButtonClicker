@@ -9,3 +9,7 @@
 body {
     align-items: flex-start;
 }
+
+.body {
+    font-size: 0.8rem;
+}

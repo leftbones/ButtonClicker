@@ -30,7 +30,7 @@ var updateStats = function() {
     let i = 0;
     for (let stat in userStats) {
         let statValue = document.getElementById("userStatValue_" + i);
-        statValue.innerHTML = userStats[stat];
+        statValue.innerHTML = formatNumber(userStats[stat]);
         i++;
     }
 }
