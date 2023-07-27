@@ -3,25 +3,50 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
         <title>Button Clicker</title>
+
         <link rel="stylesheet" type="text/css" href="spacebox.css" />
         <link rel="stylesheet" type="text/css" href="style.css" />
+
+        <script src="https://cdn.jsdelivr.net/npm/break_infinity.js@2"></script>
     </head>
     <body class="pad-1" onload="Setup()">
         <!-- Content -->
         <div class="box">
 
             <!-- Header -->
-            <div class="box">
+            <div class="box text-c">
                 <p class="title">Button Clicker</p>
             </div>
 
             <!-- Button Panel-->
             <div class="panel">
+                <div class="panel-header">
+                    <p class="header">Button</p>
+                </div>
                 <div class="panel-body">
                     <p class="heading text-c" id="clickCounter"></p>
                     <p class="subheading pad-b1 text-c">clicks</p>
-                    <button class="button size-full danger" id="theButton" onclick="UserClick()"></button>
+                    <div class="box">
+                        <button class="button danger size-5 align-c" id="theButton"></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cheats Panel -->
+            <div class="panel">
+                <div class="panel-header">
+                    <p class="header">Cheats</p>
+                </div>
+
+                <div class="panel-body">
+                    <div class="hbox fill gap-1">
+                        <button class="button" onclick="cheatAddClicks(10)">+10</button>
+                        <button class="button" onclick="cheatAddClicks(100)">+100</button>
+                        <button class="button" onclick="cheatAddClicks(1000)">+1,000</button>
+                        <button class="button" onclick="cheatAddClicks(10000)">+10,000</button>
+                    </div>
                 </div>
             </div>
 
@@ -39,23 +64,36 @@
                         <button class="panel-btn-right">Max</button>
                     </div>
 
-                    <div class="hbox">
-                        <p class="body size-6 align-c margin-0">Auto-Clicker</p>
-                        <button class="button size-4">10C</button>
-                    </div>
+                    <div class="box" id="storeItemsBox"></div>
                 </div>
             </div>
 
-            <!-- Trophies Panel (Unfinished) -->
+            <!-- Face Collection Panel -->
             <!-- <div class="panel">
                 <div class="panel-header">
-                    <p class="header">Trophies</p>
+                    <p class="header">Face Collection</p>
                 </div>
 
                 <div class="panel-body">
                     <div class="hbox">
+                        <button class="button size-2">:-)</button>
+                        <button class="button size-2">:-O</button>
+                        <button class="button size-2">:-B</button>
+                        <button class="button size-2">:-/</button>
+                        <button class="button size-2">:-U</button>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- Trophies Panel (Unimplemented) -->
+            <!-- <div class="panel">
+                <div class="panel-header">
+                    <p class="header">Trophy Case</p>
+                </div>
+                <div class="panel-body">
+                    <div class="hbox">
                         <button class="button size-2"><i class="material-icons">mouse</i></button>
-                        <button class="button size-2"><i class="material-icons">favorite</i></button>
+                        <button class="button size-2"><i class="material-icons">face</i></button>
                         <button class="button size-2"><i class="material-icons">schedule</i></button>
                         <button class="button size-2"><i class="material-icons">grade</i></button>
                         <button class="button size-2"><i class="material-icons">swipe</i></button>
@@ -63,6 +101,16 @@
                 </div>
             </div> -->
 
+            <!-- Stats Panel -->
+            <div class="panel">
+                <div class="panel-header">
+                    <p class="header">Stats</p>
+                </div>
+
+                <div class="panel-body">
+                    <div class="hbox gap-0" id="userStatsPanel"></div>
+                </div>
+            </div>
 
             <!-- Footer -->
             <div class="footer pad-t1">
@@ -72,6 +120,15 @@
         </div>
 
         <!-- Scripts -->
+        <script src='globals.js'></script>
+        <script src='util.js'></script>
+        <script src='store_items.js'></script>
+        <script src='store.js'></script>
+        <script src='upgrades.js'></script>
+        <script src='trophies.js'></script>
+        <script src='face.js'></script>
+        <script src='cheats.js'></script>
+        <script src='stats.js'></script>
         <script src='main.js'></script>
     </body>
 </html>
