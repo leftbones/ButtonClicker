@@ -15,7 +15,7 @@ var clicks = new Decimal(0);
 var clickPower = 1.0;
 var clickMultiplier = 1.0;
 
-var scrubMultiplier = 0.01;
+var scrubMultiplier = 0.5;
 
 var globalClickMultiplier = 1.0;
 
@@ -24,7 +24,7 @@ var buttonRepeatRate = 500;
 var buttonHeldInterval;
 
 var buttonIsScrubbed = false;
-var buttonScrubRate = 10;
+var buttonScrubRate = 5;
 var buttonScrubTimer = buttonScrubRate;
 var buttonScrubTimerLast = 0;
 var buttonScrubTimeout = 100;
@@ -36,6 +36,7 @@ var userStats = {
     "Auto Clicks" : 0,
     "Clicks Spent" : 0,
     "Items Purchased" : 0,
+    "Upgrades Purchased" : 0,
     "Faces Collected" : 0,
     "Rare Faces Collected" : 0,
     "Rare Face Rolls" : 0,

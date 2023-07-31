@@ -41,30 +41,41 @@
                 </div>
 
                 <div class="panel-body">
-                    <div class="hbox fill gap-1">
-                        <button class="button" onclick="cheatAddClicks(10)">+10</button>
-                        <button class="button" onclick="cheatAddClicks(100)">+100</button>
-                        <button class="button" onclick="cheatAddClicks(1000)">+1,000</button>
-                        <button class="button" onclick="cheatAddClicks(10000)">+10,000</button>
+                    <div class="panel-buttons">
+                        <button class="panel-btn-left" onclick="cheatAddClicks(10)">+10</button>
+                        <button class="panel-btn-center" onclick="cheatAddClicks(100)">+100</button>
+                        <button class="panel-btn-center" onclick="cheatAddClicks(1000)">+1,000</button>
+                        <button class="panel-btn-right" onclick="cheatAddClicks(10000)">+10,000</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Store Panel -->
+            <!-- Clickers Panel -->
             <div class="panel">
                 <div class="panel-header">
-                    <p class="header">Store</p>
+                    <p class="header">Clickers</p>
                 </div>
 
                 <div class="panel-body">
                     <div class="panel-buttons pad-b1">
                         <button class="panel-btn-left" id="buy1Button" onclick="setStoreBuyAmount(0)" disabled>1</button>
                         <button class="panel-btn-center" id="buy10Button" onclick="setStoreBuyAmount(1)">10</button>
-                        <button class="panel-btn-center" id="buy100Button" onclick="setStoreBuyAmount(2)">100</button>
-                        <!-- <button class="panel-btn-right" id="buy1000Button" onclick="setStoreBuyAmount(3)">Max</button> -->
+                        <button class="panel-btn-right" id="buy100Button" onclick="setStoreBuyAmount(2)">100</button>
+                        <!-- <button class="panel-btn-right" id="buyMaxButton" onclick="setStoreBuyAmount(3)">Max</button> -->
                     </div>
 
-                    <div class="box" id="storeItemsBox"></div>
+                    <div class="box" id="clickerStoreBox"></div>
+                </div>
+            </div>
+
+            <!-- Upgrades Panel -->
+            <div class="panel">
+                <div class="panel-header">
+                    <p class="header">Upgrades</p>
+                </div>
+
+                <div class="panel-body">
+                    <div class="box" id="upgradeStoreBox"></div>
                 </div>
             </div>
 
@@ -122,10 +133,9 @@
         <!-- Scripts -->
         <script src="globals.js"></script>
         <script src="util.js"></script>
-        <script src="store_items.js"></script>
         <script src="store.js"></script>
-        <script src="upgrade_items.js"></script>
-        <script src="upgrades.js"></script>
+        <script src="clicker_store.js"></script>
+        <script src="upgrade_store.js"></script>
         <script src="trophies.js"></script>
         <script src="face.js"></script>
         <script src="cheats.js"></script>

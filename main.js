@@ -9,11 +9,10 @@
 
 // Update the click counter text
 var updateClickCounter = function() {
-    if (Number.isInteger(clicks.toNumber())) clickCounter.innerHTML = formatNumber(clicks.toNumber());
-    else clickCounter.innerHTML = formatNumber(Number(clicks.toFixed(2)));
+    clickCounter.innerHTML = formatNumber(Number(clicks.toFixed()));
 
-    updateStore();
-    updateStats();
+    // updateStore();
+    clickerStore.update();
 }
 
 // User clicks the Button
@@ -40,13 +39,13 @@ var scrubClick = function() {
 
 // Automatic clicks from store items
 var autoClick = function() {
-    for (let i = 0; i < storeItems.length; i++) {
-        let item = storeItems[i];
-        if (item.owned > 0) {
-            clicks = Decimal.add(clicks, item.owned * (item.click_power * item.power_multiplier) * globalClickMultiplier);
-            userStats["Auto Clicks"]++;
-        }
-    }
+    // for (let i = 0; i < storeItems.length; i++) {
+    //     let item = storeItems[i];
+    //     if (item.owned > 0) {
+    //         clicks = Decimal.add(clicks, item.owned * (item.click_power * item.power_multiplier) * globalClickMultiplier);
+    //         userStats["Auto Clicks"]++;
+    //     }
+    // }
 
     updateClickCounter();
 }
@@ -63,21 +62,27 @@ var checkIfScrubbing = function() {
 var Setup = function() {
     console.clear();
 
-    setInterval(() => { autoClick(); }, 1000);
+    // Fast Updates
     setInterval(() => { checkIfScrubbing(); }, buttonScrubTimeout);
 
+    // Slow Updates
+    setInterval(() => { autoClick(); }, 1000);
+    setInterval(() => { updateStats(); }, 5000);
+
+    // Button Events
+    document.addEventListener("mouseup", () => {
+        buttonIsHeld = false;
+        buttonScrubTimer = buttonScrubRate;
+        clearInterval(buttonHeldInterval);
+    });
+
     theButton.addEventListener("click", userClick);
+
     theButton.addEventListener("mousedown", () => {
         buttonIsHeld = true;
         buttonHeldInterval = setInterval(() => {
             userClick();
         }, buttonRepeatRate);
-    });
-
-    document.addEventListener("mouseup", () => {
-        buttonIsHeld = false;
-        buttonScrubTimer = buttonScrubRate;
-        clearInterval(buttonHeldInterval);
     });
 
     theButton.addEventListener("mousemove", () => {
@@ -87,7 +92,9 @@ var Setup = function() {
         }
     });
 
-    setupStore();
+    // Setup
+    // setupStore();
+    setupClickerStore();
     setupStats();
 
     updateClickCounter();
