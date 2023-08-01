@@ -43,3 +43,8 @@ var userStats = {
     "Trophies Collected" : 0,
     "Secrets Found" : 0
 };
+
+var secrets = {
+    "Heartwarming" : false,
+    "Titlist" : false,
+};

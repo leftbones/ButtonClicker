@@ -7,12 +7,17 @@
 // TODO
 // - Change all `function() { }` to `() => { }` for readability
 
+// Get the current clicks counter value as a number
+var totalClicks = function() {
+    return Number(clicks.toFixed());
+}
+
 // Update the click counter text
 var updateClickCounter = function() {
     clickCounter.innerHTML = formatNumber(Number(clicks.toFixed()));
 
-    // updateStore();
     clickerStore.update();
+    upgradeStore.update();
 }
 
 // User clicks the Button
@@ -27,25 +32,27 @@ var userClick = function() {
 
 // User clicks by "scrubbing" the Button
 var scrubClick = function() {
-    clicks = Decimal.add(clicks, (clickPower * (clickMultiplier * scrubMultiplier) * globalClickMultiplier));
+    let scrubClicks = clickPower * clickMultiplier * scrubMultiplier * globalClickMultiplier;
+    clicks = Decimal.add(clicks, scrubClicks);
 
     updateClickCounter();
     randomizeFace();
                 
     buttonScrubTimer = buttonScrubRate;
 
-    userStats["Scrub Clicks"]++;
+    userStats["Scrub Clicks"] += scrubClicks;
 }
 
 // Automatic clicks from store items
 var autoClick = function() {
-    // for (let i = 0; i < storeItems.length; i++) {
-    //     let item = storeItems[i];
-    //     if (item.owned > 0) {
-    //         clicks = Decimal.add(clicks, item.owned * (item.click_power * item.power_multiplier) * globalClickMultiplier);
-    //         userStats["Auto Clicks"]++;
-    //     }
-    // }
+    for (let i in clickerStore.items) {
+        let item = clickerStore.items[i];
+        if (item.owned > 0) {
+            let itemClicks = item.getClicks();
+            clicks = Decimal.add(clicks, itemClicks);
+            userStats["Auto Clicks"] += itemClicks;
+        }
+    }
 
     updateClickCounter();
 }
@@ -61,13 +68,14 @@ var checkIfScrubbing = function() {
 // Setup the game (called on page load)
 var Setup = function() {
     console.clear();
+    theButton.innerHTML = "x_x" // If this face appears, something is broken
 
     // Fast Updates
     setInterval(() => { checkIfScrubbing(); }, buttonScrubTimeout);
 
     // Slow Updates
     setInterval(() => { autoClick(); }, 1000);
-    setInterval(() => { updateStats(); }, 5000);
+    setInterval(() => { updateStats(); }, 2500);
 
     // Button Events
     document.addEventListener("mouseup", () => {
@@ -92,9 +100,11 @@ var Setup = function() {
         }
     });
 
-    // Setup
-    // setupStore();
-    setupClickerStore();
+    // Store Setup
+    clickerStore = new ClickerStore(clickerStoreBox);
+    upgradeStore = new UpgradeStore(upgradeStoreBox);
+
+    // Misc Setup
     setupStats();
 
     updateClickCounter();
