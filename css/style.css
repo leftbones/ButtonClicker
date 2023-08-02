@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+
+* {
+    font-family: 'Source Code Pro', sans-serif;
+}
+
+body {
+    align-items: flex-start;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.body {
+    font-size: 0.8rem;
+}
