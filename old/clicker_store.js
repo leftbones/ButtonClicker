@@ -6,14 +6,14 @@ class ClickerItem extends Item {
         this.multiplier = multiplier;
     }
 
-    getClicks() {
-        return this.owned * (this.power * this.multiplier) * globalClickMultiplier;
+    getTotalClicks(game) {
+        return this.power * this.multiplier * game.globalClickMultiplier;
     }
-    
+
     updateLabel() {
         let itemLabel = document.getElementById("storeItemLabel_" + this.id);
 
-        let clicksPerSecond = this.getClicks();
+        let clicksPerSecond = this.getTotalClicks();
         if (!Number.isInteger(clicksPerSecond)) clicksPerSecond = clicksPerSecond.toFixed(2);
 
         itemLabel.innerHTML = this.name + " <span style='font-size: 0.75rem;'>(" + formatNumber(this.owned) + ", " + clicksPerSecond + " CPS)</span>";
